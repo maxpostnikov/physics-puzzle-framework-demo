@@ -28,7 +28,8 @@ package
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			
-			Engine.getInstacne().setData(GameData.LEVELS_TOTAL, GameData.SCORE_TIMER, GameData.SCORE_INITIAL, GameData.SCORE_ON_TIMER,
+			Engine.getInstacne().setData(GameData.LEVELS_TOTAL, GameData.WIDTH, GameData.HEIGHT, GameData.BORDER, GameData.GRAVITY_X, GameData.GRAVITY_Y,
+										 GameData.SCORE_TIMER, GameData.SCORE_INITIAL, GameData.SCORE_ON_TIMER, 
 										 GameData.URL_SPONSOR, GameData.URL_MORE_GAMES, GameData.URL_WALKTHROUGH);
 			Engine.getInstacne().launch(this, GameContent.SCREENS, GameData.GAME_NAME, GameData.DEBUG);
 			//Engine.getInstacne().playSound(GameContent.music);

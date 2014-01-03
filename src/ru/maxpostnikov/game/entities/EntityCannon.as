@@ -69,8 +69,8 @@ package ru.maxpostnikov.game.entities
 				_projectile = new Entity_Ragdoll();
 				
 				var angle:Number = _joint.GetJointAngle() + Utils.angleInRadians(this.initialRotation);
-				var position:Point = new Point((Math.cos(angle) * _PROJECTILE_OFFSET_X) - (Math.sin(angle) * _PROJECTILE_OFFSET_Y) + this.x,
-											   (Math.sin(angle) * _PROJECTILE_OFFSET_X) + (Math.cos(angle) * _PROJECTILE_OFFSET_Y) + this.y);
+				var position:Point = new Point((Math.cos(angle) * _PROJECTILE_OFFSET_X) - (Math.sin(angle) * _PROJECTILE_OFFSET_Y) + positionGlobal.x,
+											   (Math.sin(angle) * _PROJECTILE_OFFSET_X) + (Math.cos(angle) * _PROJECTILE_OFFSET_Y) + positionGlobal.y);
 				
 				_projectile.x = position.x;
 				_projectile.y = position.y;
@@ -86,7 +86,7 @@ package ru.maxpostnikov.game.entities
 		{
 			var randomOffset:Number = 0;
 			var angle:Number = _joint.GetJointAngle() + Utils.angleInRadians(this.initialRotation);
-			var speed:Number = _PROJECTILE_SPEED_MIN + Point.distance(new Point(this.x, this.y), new Point(this.parent.mouseX, this.parent.mouseY));
+			var speed:Number = _PROJECTILE_SPEED_MIN + Point.distance(new Point(positionGlobal.x, positionGlobal.y), new Point(this.parent.mouseX, this.parent.mouseY));
 			if (speed > _PROJECTILE_SPEED_MAX) speed = _PROJECTILE_SPEED_MAX;
 			
 			for each (var component:Component in _projectile.components) {
@@ -104,7 +104,7 @@ package ru.maxpostnikov.game.entities
 		
 		private function rotateToCursor():void 
 		{
-			var angle:Number = Utils.angleInDegrees(Math.atan2(this.mouseY, this.mouseX)) - this.initialRotation;
+			var angle:Number = Utils.angleInDegrees(Math.atan2(stage.mouseY - positionGlobal.y, stage.mouseX - positionGlobal.x)) - this.initialRotation;
 			
 			if (angle > 90)
 				angle -= 360;

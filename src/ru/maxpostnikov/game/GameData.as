@@ -10,6 +10,13 @@ package ru.maxpostnikov.game
 		public static const DEBUG:Boolean = true;
 		public static const LOCKED:Boolean = true;
 		
+		public static const WIDTH:Number = 640;
+		public static const HEIGHT:Number = 480;
+		public static const BORDER:Number = 150;
+		
+		public static const GRAVITY_X:Number = 0;
+		public static const GRAVITY_Y:Number = 10;
+		
 		public static const LEVELS_TOTAL:int = 3;
 		public static const GAME_NAME:String = "Test";
 		

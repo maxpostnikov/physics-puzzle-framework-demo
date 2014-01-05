@@ -69,8 +69,8 @@ package ru.maxpostnikov.game.entities
 				_projectile = new Entity_Ragdoll();
 				
 				var angle:Number = _joint.GetJointAngle() + Utils.angleInRadians(this.initialRotation);
-				var position:Point = new Point((Math.cos(angle) * _PROJECTILE_OFFSET_X) - (Math.sin(angle) * _PROJECTILE_OFFSET_Y) + positionGlobal.x,
-											   (Math.sin(angle) * _PROJECTILE_OFFSET_X) + (Math.cos(angle) * _PROJECTILE_OFFSET_Y) + positionGlobal.y);
+				var position:Point = new Point((Math.cos(angle) * _PROJECTILE_OFFSET_X) - (Math.sin(angle) * _PROJECTILE_OFFSET_Y) + positionLocal.x,
+											   (Math.sin(angle) * _PROJECTILE_OFFSET_X) + (Math.cos(angle) * _PROJECTILE_OFFSET_Y) + positionLocal.y);
 				
 				_projectile.x = position.x;
 				_projectile.y = position.y;
@@ -78,7 +78,7 @@ package ru.maxpostnikov.game.entities
 				this.parent.addChild(_projectile);
 				
 				var effect:MCEffect = new Effect_Bang();
-				effect.init(this, globalToLocal(new Point(position.x, position.y)));
+				effect.init(this, new Point(position.x, position.y));
 			}
 		}
 		
@@ -86,7 +86,7 @@ package ru.maxpostnikov.game.entities
 		{
 			var randomOffset:Number = 0;
 			var angle:Number = _joint.GetJointAngle() + Utils.angleInRadians(this.initialRotation);
-			var speed:Number = _PROJECTILE_SPEED_MIN + Point.distance(new Point(positionGlobal.x, positionGlobal.y), new Point(this.parent.mouseX, this.parent.mouseY));
+			var speed:Number = _PROJECTILE_SPEED_MIN + Point.distance(new Point(positionLocal.x, positionLocal.y), new Point(this.parent.mouseX, this.parent.mouseY));
 			if (speed > _PROJECTILE_SPEED_MAX) speed = _PROJECTILE_SPEED_MAX;
 			
 			for each (var component:Component in _projectile.components) {

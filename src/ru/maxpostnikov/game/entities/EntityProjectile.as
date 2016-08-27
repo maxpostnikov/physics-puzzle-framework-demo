@@ -10,7 +10,7 @@ package ru.maxpostnikov.game.entities
 	public class EntityProjectile extends Entity
 	{
 		
-		override public function contact(type:String, fixture:b2Fixture, entity:Entity, impulse:Number):void 
+		override public function contact(type:String, fixture:b2Fixture, entity:Entity, entityFixture:b2Fixture, impulse:Number):void
 		{
 			if (type == ContactListener.BEGIN_CONTACT && entity is EntityTarget) {
 				entity.remove();

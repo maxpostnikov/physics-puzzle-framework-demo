@@ -13,6 +13,7 @@ package
 	 * @author Max stagefear Postnikov
 	 */
 	[Frame(factoryClass="Preloader")]
+	[SWF(width="640", height="480")]
 	public class Main extends Sprite 
 	{
 		
